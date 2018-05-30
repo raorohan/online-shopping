@@ -11,11 +11,31 @@ public class PageController {
 	public ModelAndView handle()
 	{
 		
-		ModelAndView mav = new ModelAndView("home");
-		mav.addObject("greeting","Welcome to the amazing website");
+		ModelAndView mav = new ModelAndView("main");
+		mav.addObject("title","Home");
+		mav.addObject("userclickhome",true);
 		return mav;
 	}
 	
+	@RequestMapping(value="/about")
+	public ModelAndView about()
+	{
+		
+		ModelAndView mav = new ModelAndView("main");
+		mav.addObject("title","About Us");
+		mav.addObject("userClickAbout",true);
+		return mav;
+	}
+	
+	@RequestMapping(value="/contact")
+	public ModelAndView contact()
+	{
+		
+		ModelAndView mav = new ModelAndView("main");
+		mav.addObject("title","Contact Us");
+		mav.addObject("userClickContact",true);
+		return mav;
+	}
 	
 	
 	
