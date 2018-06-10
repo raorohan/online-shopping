@@ -33,3 +33,13 @@ body {
 	position: absolute;
 	width: 100%;
 }
+.dataTableImg{
+	
+	height: 100px;
+	width: 100px;
+}
+
+.imageSingleProduct {
+	height: 250px;
+	width: 250px;
+}

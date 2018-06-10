@@ -7,12 +7,52 @@
 		</div>
 		<!-- TO display actually products -->
 		<div class="col-md-9">
-			<!-- Adding breadcrum component -->
+			
 			<div class="row">
 				<div class="col-lg-12">
+				<table id="productListTable"
+						class="table table-stiped table-borderd">
+						<thead>
+							<tr>
+								<th></th>
+								<th>Name</th>
+								<th>Brand</th>
+								<th>Price</th>
+								<th>Quantity</th>
+								<th></th>
+							</tr>
+						</thead>
+						
+						<tfoot>
+							<tr>
+								<th></th>
+								<th>Name</th>
+								<th>Brand</th>
+								<th>Price</th>
+								<th>Quantity</th>
+								<th></th>
+								
+							</tr>
+						</tfoot>
 
+					</table>
 
-					<c:if test="${userclickAllProducts==true}">
+				</div>
+				
+				
+
+			</div>
+			
+
+			
+		</div>
+
+	</div>
+	
+	
+</div>
+<!-- Adding breadcrum component -->
+					<%-- <c:if test="${userclickAllProducts==true}">
 						<table>
 							<tr>
 								<td><a href="${contextRoot}/home">Home</a></td>
@@ -30,11 +70,4 @@
 								<td><a class="active">/${category.name}</td>
 							</tr>
 						</table>
-					</c:if>
-				</div>
-
-			</div>
-		</div>
-
-	</div>
-</div>
+					</c:if> --%>

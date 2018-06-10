@@ -1,8 +1,6 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <spring:url var="css" value="/resources/css" />
-<spring:url var="js" value="/resources/js" />
-<spring:url var="images" value="/resources/images" />
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html lang="en">
@@ -18,22 +16,17 @@
 <title>Online Shopping - ${title}</title>
 <!-- Bootstrap core CSS -->
 <link href="${css}/bootstrap.min.css" rel="stylesheet">
+
 <!-- Bootstrap slate theme CSS -->
 <link href="${css}/bootstrap-spacelab-theme.css" rel="stylesheet">
 
 <!-- Data Table Boostrap ja file -->
 <link href="${css}/dataTables.bootstrap.css" rel="stylesheet">
-<script src="${js}/jquery.js"></script>
 
 <!-- Custom styles for this template -->
 <!-- <link href="css/shop-homepage.css" rel="stylesheet"> -->
 <link href="${css}/myapp.css" rel="stylesheet">
 
-<script>
-	window.menu = '${title}'
-	window.contextRoot = '${pageContext.request.contextPath}'
-	window.categoryId = '${category.id}'
-</script>
 </head>
 
 <body>
@@ -45,42 +38,39 @@
 		<!-- /.container -->
 		<!-- Page Content -->
 		<div class="content">
-		<!-- When User clicks on home -->
-			<c:if test="${userclickhome == true}">
-				<%@include file="home.jsp"%>
-			</c:if>
-			<!-- When User clicks on About -->
-			<c:if test="${userClickAbout == true}">
-				<%@include file="about.jsp"%>
-			</c:if>
-			<!-- When User clicks on contact -->
-			<c:if test="${userClickContact == true}">
-				<%@include file="contact.jsp"%>
-			</c:if>
-			<!-- When User clicks on view Products -->
-			<c:if test="${userclickAllProducts == true or userclickCategoryProducts==true}">
-				<%@include file="listProducts.jsp"%>
-			</c:if>
-			<!-- When User clicks on View (a Single Product) -->
-			<c:if test="${userClickShowProduct == true}">
-				<%@include file="singleProduct.jsp"%>
-			</c:if>
-			
+
+			<div class="container">
+
+				<div class="row">
+
+					<div class="col-xs-12 col-md-12">
+						<div class="jumbotron">
+
+							<h1>${errorTitle}</h1>
+							<hr />
+							<blockquote>${errorDescription}</blockquote>
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+
 		</div>
 		<!-- Footer -->
 		<%@include file="./common/footer.jsp"%>
 
 		<!-- Bootstrap core JavaScript -->
 		<script src="${js}/bootstrap.bundle.min.js"></script>
-		
+
 		<script src="${js}/jquery.dataTables.js"></script>
 		<!-- DataTable Bootstrap js file -->
 		<script src="${js}/dataTables.bootstrap.js"></script>
-		
-		
+
+
 		<!-- Self COded js FIle -->
 		<script src="${js}/myapp.js"></script>
-		
+
 	</div>
 </body>
 

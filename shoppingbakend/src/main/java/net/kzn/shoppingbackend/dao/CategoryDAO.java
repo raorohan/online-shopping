@@ -2,10 +2,8 @@ package net.kzn.shoppingbackend.dao;
 
 import java.util.List;
 
-import org.springframework.stereotype.Component;
-
 import net.kzn.shoppingbackend.dto.Category;
-@Component
+
 public interface CategoryDAO {
 	
 	List<Category> list();
