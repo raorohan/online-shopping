@@ -9,10 +9,15 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Transient;
+import javax.validation.constraints.Min;
 
+import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.stereotype.Component;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+@SuppressWarnings("deprecation")
 @Component
 @Entity
 public class Product {
@@ -25,13 +30,15 @@ public class Product {
 	private int id;
 	private String code;
 	
+	@NotBlank(message="Please enter product name!")
 	private String name;
 	
+	@NotBlank(message="Please enter product brand!")
 	private String brand;
-	
+	@NotBlank(message="Please enter product description!")
 	private String description;
 	@Column(name = "unit_price")
-	
+	@Min(value=1, message="Price can not be less than 1")
 	private double unitPrice;
 	private int quantity;
 	@Column(name = "is_active")	
@@ -45,7 +52,19 @@ public class Product {
 	private int purchases;
 	private int views;
 	
+	//For file upload
+	@Transient
+	private MultipartFile file;
+	
+		public MultipartFile getFile() {
+		
+		return file;
+	}
 
+
+	public void setFile(MultipartFile file) {
+		this.file = file;
+	}
 
 
 	// default constructor

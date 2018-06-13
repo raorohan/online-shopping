@@ -19,7 +19,8 @@
    <property name="prefix" value="/WEB-INF/views/"></property>
    <property name="suffix" value=".jsp"></property>
    </bean>
-   
+   <!-- For file upload -->
+   <bean id="multipartResolver" class="org.springframework.web.multipart.support.StandardServletMultipartResolver" />
    
    <!--  Loading Static Resources -->
    <mvc:annotation-driven />

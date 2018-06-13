@@ -13,6 +13,10 @@ $(function() {
 	case 'All Products':
 		$("#listproduct").addClass('active');
 		break;
+		
+	case 'Manage Products':
+		$("#manageproducts").addClass('active');
+		break;
 
 	default:
 		if (menu == 'home')
@@ -42,8 +46,7 @@ var $table = $('#productListTable');
 if ($table.length) {
 	$table.DataTable({
 
-		lengthMenu : [ [ 3, 5, 7, -1 ],
-				[ '3 Records', '5 Records', '7 Records', 'All Records' ] ],
+		lengthMenu : [ [ 3, 5, 7, -1 ],[ '3 Records', '5 Records', '7 Records', 'All Records' ] ],
 		pageLength : 5,
 		ajax : {
 
@@ -83,7 +86,7 @@ if ($table.length) {
 				if(data < 1){
 					return '<span style="color:red;">Out of Stock</span';
 				}
-				else {data;}
+				else { return data}
 			},
 		},
 
@@ -113,3 +116,14 @@ if ($table.length) {
 
 	});
 }
+
+
+/*//dismissing the alert
+var $alert = $('.alert');
+if($alert.length)
+	{
+	setTimeout(function(){
+		
+		$alert.fadeOut('slow');
+	},3000)
+	}*/
