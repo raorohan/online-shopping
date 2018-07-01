@@ -41,42 +41,27 @@
 <body>
 	<div class="wrapper">
 		<!-- Navigation bar -->
-		<%@include file="./common/navbar.jsp"%>
+					<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+						  <div class="container">
+						    	<div class="navbar-header">
+						      		<a class="navbar-brand" href="${flowExecutionUrl}&_eventId_home">Home</a>
+						    	</div>
+						   </div>
+					</nav>
 
 
 		<!-- /.container -->
 		<!-- Page Content -->
 		<div class="content parent_content" >
 			
-						<!-- When User clicks on home -->
-							<c:if test="${userclickhome == true}">
-								<%@include file="home.jsp"%>
-							</c:if>
-							<!-- When User clicks on About -->
-							<c:if test="${userClickAbout == true}">
-								<%@include file="about.jsp"%>
-							</c:if>
-							<!-- When User clicks on contact -->
-							<c:if test="${userClickContact == true}">
-								<%@include file="contact.jsp"%>
-							</c:if>
-							<!-- When User clicks on view Products -->
-							<c:if test="${userclickAllProducts == true or userclickCategoryProducts==true}">
-								<%@include file="listProducts.jsp"%>
-							</c:if>
-							<!-- When User clicks on View (a Single Product) -->
-							<c:if test="${userClickShowProduct == true}">
-								<%@include file="singleProduct.jsp"%>
-							</c:if>
-							<c:if test="${userClickManageproducts == true}">
-								<%@include file="manageProducts.jsp"%>
-							</c:if>
-							
+						<div class="container">
+						   <h3>this will be trigerred by flow</h3>
+						</div>
 				
 			
 		</div>
 		<!-- Footer -->
-		<%@include file="./common/footer.jsp"%>
+		<%@include file="../../common/footer.jsp"%>
 		<!-- Bootstrap core JavaScript -->
 		<script src="${js}/bootstrap.min.js"></script>
 		<script src="${js}/bootstrap.js"></script>

@@ -11,7 +11,7 @@
 			<div class="row">
 				<div class="col-lg-12">
 				<table id="productListTable"
-						class="table table-stiped table-borderd">
+						class="table table-striped table-borderd">
 						<thead>
 							<tr>
 								<th></th>

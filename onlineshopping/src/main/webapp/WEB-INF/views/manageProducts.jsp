@@ -24,11 +24,7 @@
 
 					<!-- Form Elements -->
 					
-					<sf:form class="form-horizontal" modelAttribute="product"
-					action="${contextRoot}/manage/products"
-					method="POST"
-					enctype="multipart/form-data"
-					>
+					<sf:form class="form-horizontal" modelAttribute="product" action="${contextRoot}/manage/products" method="POST" enctype="multipart/form-data">
     						<div class="container">
         						<div class="row">
            							 <div class="form-group form-group-sm col-sm-12">
@@ -41,7 +37,7 @@
                     						</div>
                 						</div>
             						</div>
-            						<div class="form-group form-group-sm col-sm-12">
+            						 <div class="form-group form-group-sm col-sm-12">
                 						<div class="row">
                    							 <label for="brand" class="col-sm-4 col-form-label">Enter Brand Name: </label>
                     						 <div class="col-sm-8">
@@ -105,12 +101,12 @@
                         						itemLabel="name"
                         						itemValue="id"
                         						 />
-                        						
-                        						<!-- <option value="1" selected>Category One</option>
-                        						<option value="2" >Category Two</option>
-                        						<option value="3" >Category Three</option> -->
-                        						
-												<!-- <em class="help-block">Please enter Quantity Available</em> -->
+                        						 <c:if test="${product.id == 0 }">
+                        						 		<div class="text-right">
+                        									<!-- <button type="button" id="myCategoryModal" data-toggle="modal" data-target="myModal" class="btn btn-warning btn-sm" >Add Category</button> -->
+                    									    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+                    									</div>
+                    							 </c:if>
                     						</div>
                 						</div>
             						</div>
@@ -132,20 +128,115 @@
                 						</div>
             						</div>
             
-            								
-            
-            
-            
             
             				  </div>
            				 </div>
            			 </sf:form>
             
-            
-
-					
 				</div>
 			</div>
 		</div>
 	</div>
+
+
+	<div class="row">
+	
+	<div class="col-xs-12 col-md-12">
+	<h3>Available Products</h3>
+	<hr/>
+	</div>
+	
+	<div class="col-xs-12 col-md-12">
+		<div style="overflow:auto;">
+		
+			<table id="adminProductsTable" class="table table-striped table-borderd">
+						<thead>
+							<tr>
+								<th>Id</th>
+								<th>&#160;</th>
+								<th>Brand</th>
+								<th>Name</th>
+								<th>Quantity</th>
+								<th>Unit Price</th>
+								<th>Active</th>
+								<th>Edit</th>
+							</tr>
+						</thead>
+						<tfoot>
+							<tr>
+								<th>Id</th>
+								<th>&#160;</th>
+								<th>Brand</th>
+								<th>Name</th>
+								<th>Quantity</th>
+								<th>Unit Price</th>
+								<th>Active</th>
+								<th>Edit</th>
+								
+							</tr>
+						</tfoot>
+
+					</table>
+		</div>
+	</div>
+	</div>
+	
+	 <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modal Header</h4>
+        </div>
+        <div class="modal-body">
+          <p>Some text in the modal.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+<!-- Modal -->
+     <!-- <div class="modal fade"  id="myCategoryModal" role="dialog" tabindex="-1">
+     		<div class="modal-dialog" role="document">
+     				<div class="modal-content">
+     						 Modal Header
+     						<div class="modal-header">
+     							<button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+     							<h4 class="modal-title">Add New Category</h4>
+    						 </div>
+    						   MOdal Body
+    						 <div class="modal-body">
+    						 Category form
+    						 </div>
+    				</div>
+    		</div>
+     
+     </div> -->
+     
+     <!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div> -->
+
 </div>

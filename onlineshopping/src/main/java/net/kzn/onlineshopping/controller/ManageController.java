@@ -19,6 +19,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -75,7 +76,22 @@ public class ManageController {
 	public String handleProductSubmission(@Valid @ModelAttribute("product") Product mproduct, BindingResult result, Model model, HttpServletRequest request)
 	{
 		
-		new ProductValidator().validate(mproduct, result);
+		// handle image validation for new products
+		if(mproduct.getId() == 0)
+		{
+			// for new product addition
+			new ProductValidator().validate(mproduct, result);
+		}
+		else {
+			// for update product
+						
+			if(!mproduct.getFile().getOriginalFilename().equals(""))
+			{
+				// checking whether some uploading the correct file while updating product
+				new ProductValidator().validate(mproduct, result);
+			}
+		}
+		
 		
 		// check if there are any errors
 		if(result.hasErrors())
@@ -86,7 +102,18 @@ public class ManageController {
 			model.addAttribute("message","Validation failed for Product submission!");
 			return "main";
 		}
-		productDAO.add(mproduct);
+		// putting separate logic for adding and updating product
+		if(mproduct.getId() == 0)
+		{
+			// Add the product
+			productDAO.add(mproduct);
+		}
+		else{
+			
+			// Update product
+			productDAO.update(mproduct);
+		}
+		
 		
 		if(!mproduct.getFile().getOriginalFilename().equals(""))
 		{
@@ -97,6 +124,63 @@ public class ManageController {
 		
 		logger.info(mproduct.toString());
 		return "redirect:/manage/products?operation=product";
+	}
+	
+	
+	// Admin:- Activating and deactivating the product
+	
+	@RequestMapping(value="/product/{id}/activation", method=RequestMethod.POST)
+	public String manageActivationOfProduct(@PathVariable("id") int id)
+	{
+		
+		Product product = productDAO.get(id);
+		boolean flag = product.isActive();
+		if(flag){
+			product.setActive(false);
+			productDAO.update(product);
+			return "Product Deactivated successfully";
+		}
+		else
+		{
+			product.setActive(true);
+			productDAO.update(product);
+			return "Product Deactivated successfully";
+		}
+		
+				
+	}
+	
+	// Manage Edit Product
+	@RequestMapping(value="/{id}/product", method=RequestMethod.GET)
+	public ModelAndView showEditProduct(@PathVariable("id") int id)
+	{
+		ModelAndView mav = new ModelAndView("main");
+		// get the product from Database
+		Product product = productDAO.get(id);
+		mav.addObject("product", product);
+		mav.addObject("title", "Manage Products");
+		mav.addObject("userClickManageproducts", true);
+		return mav;
+		/*boolean flag = productDAO.update(product);
+		if(flag){
+			return "Product updated with Id"+product.getId();
+		}
+		return "SOmething went wrong";*/
+	}
+	
+	// Manage Add category
+	@RequestMapping(value="/add/category", method=RequestMethod.GET)
+	public ModelAndView addNewCategory()
+	{
+		ModelAndView mav = new ModelAndView("main");
+		
+		Category category =  new Category();
+		category.setName("Refrigerator");
+		category.setActive(true);
+		category.setDescription("Used for cooling stuffs");
+		categoryDAO.add(category);
+		
+		return mav;
 	}
 	
 

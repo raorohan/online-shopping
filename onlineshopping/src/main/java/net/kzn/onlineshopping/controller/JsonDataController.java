@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 
+
+
 @Controller
 @RequestMapping(value="/json/data")
 public class JsonDataController {
@@ -24,6 +26,8 @@ public class JsonDataController {
 	@RequestMapping(value="/all/products")
 	public List<Product> getAllProducts()
 	{
+	
+		
 		return productDAO.listActiveProducts();
 	}
 	
@@ -33,6 +37,14 @@ public class JsonDataController {
 	public List<Product> getAllProductsByCategory(@PathVariable int id )
 	{
 		return productDAO.listActiveProductsByCategory(id);
+	}
+	
+	// for Admin 
+	@ResponseBody
+	@RequestMapping(value="admin/all/products")
+	public List<Product> getAllProductsForAdmin()
+	{
+		return productDAO.list();
 	}
 
 }

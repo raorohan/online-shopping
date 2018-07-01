@@ -41,6 +41,8 @@ public class ProductTestCase {
 		//assertEquals("Tell Me if something goes wrong",10,productDAO.listActiveProducts().size());
 		assertEquals("Tell Me if something goes wrong",2,productDAO.listActiveProductsByCategory(1).size());
 		
+		
+	
 	}
 
 }
