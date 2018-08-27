@@ -60,6 +60,15 @@ public class PageController {
 		mav.addObject("userClickContact",true);
 		return mav;
 	}
+	@RequestMapping(value="/login")
+	public ModelAndView login()
+	{
+		
+		ModelAndView mav = new ModelAndView("main");
+		mav.addObject("title","Login Page");
+		mav.addObject("userClickLogin",true);
+		return mav;
+	}
 	
 	/*Methods to load all the products based on their category*/
 	@RequestMapping(value="/show/all/products")

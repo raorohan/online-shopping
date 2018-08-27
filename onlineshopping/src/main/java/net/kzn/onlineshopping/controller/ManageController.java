@@ -9,8 +9,10 @@ import net.kzn.onlineshopping.util.FileUploadUtility;
 import net.kzn.onlineshopping.validator.ProductValidator;
 import net.kzn.shoppingbackend.dao.CategoryDAO;
 import net.kzn.shoppingbackend.dao.ProductDAO;
+import net.kzn.shoppingbackend.dao.UserDAO;
 import net.kzn.shoppingbackend.dto.Category;
 import net.kzn.shoppingbackend.dto.Product;
+import net.kzn.shoppingbackend.dto.User;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -36,6 +38,9 @@ public class ManageController {
 	
 	@Autowired 
 	private ProductDAO productDAO;
+	
+	@Autowired 
+	private UserDAO userDAO;
 	
 	public static final Logger logger = LoggerFactory.getLogger(ManageController.class);
 	
@@ -180,6 +185,27 @@ public class ManageController {
 		category.setDescription("Used for cooling stuffs");
 		categoryDAO.add(category);
 		
+		return mav;
+	}
+	
+	@RequestMapping(value="/doLogin", method=RequestMethod.POST)
+	public ModelAndView manageLogin(@RequestParam("email") String email, @RequestParam("password") String password )
+	{
+		System.out.println(email+password+12);
+		User user = new User();
+		//String email = 
+		user = userDAO.authenticateUser(email, password);
+		if(user != null){
+			ModelAndView mav = new ModelAndView("main");
+			mav.addObject("userclickhome", true);
+			//System.out.println(123456);
+			return mav;
+		}
+		ModelAndView mav = new ModelAndView("main");
+		mav.addObject("userClickContact", true);
+		System.out.println("user null");
+		
+				
 		return mav;
 	}
 	

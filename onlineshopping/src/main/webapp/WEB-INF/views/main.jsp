@@ -58,7 +58,10 @@
 							</c:if>
 							<!-- When User clicks on contact -->
 							<c:if test="${userClickContact == true}">
-								<%@include file="contact.jsp"%>
+								<%@include file="activation.jsp"%>
+							</c:if>
+							<c:if test="${userClickLogin == true}">
+								<%@include file="login.jsp"%>
 							</c:if>
 							<!-- When User clicks on view Products -->
 							<c:if test="${userclickAllProducts == true or userclickCategoryProducts==true}">

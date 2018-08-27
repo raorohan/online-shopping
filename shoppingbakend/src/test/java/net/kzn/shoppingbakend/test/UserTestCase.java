@@ -33,7 +33,7 @@ public class UserTestCase {
 	{
 		user = userDAO.userGetByEmail("kn@gmail.com");
 		
-		//assertEquals("Failed, let me know",4,user.getId());
+			assertEquals("Failed, let me know",4, userDAO.authenticateUser("rohanrao.0110@gmail.com", "AkarshaMishra"));
 	
 		assertEquals("Failed, let me know","Ahmedabad",userDAO.getBillingAddress(user.getId()).getCity());
 		

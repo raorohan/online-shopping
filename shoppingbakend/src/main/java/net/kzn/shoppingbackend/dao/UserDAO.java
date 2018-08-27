@@ -25,6 +25,8 @@ public interface UserDAO {
 		boolean updateCart(Cart cart);
 		
 		User userGetByEmail(String email);
+		
+		User authenticateUser(String email, String pass);
 	//UpdateUSer
 	//DeleteUser
 }

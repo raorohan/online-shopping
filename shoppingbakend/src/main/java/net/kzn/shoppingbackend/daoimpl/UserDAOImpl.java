@@ -74,6 +74,19 @@ public class UserDAOImpl implements UserDAO {
 		}
 				
 		}
+	
+	
+	@Override
+	public User authenticateUser(String email, String pass) {
+		// TODO Auto-generated method stub
+		
+		try{
+			return sessionFactory.getCurrentSession().createQuery("FROM User WHERE email=: email AND password =: password", User.class).setParameter("email", email).setParameter("password", pass).getSingleResult();
+		}catch(Exception ex){
+			return null;
+		}
+				
+		}
 
 	@Override
 	public Address getBillingAddress(int userId) {

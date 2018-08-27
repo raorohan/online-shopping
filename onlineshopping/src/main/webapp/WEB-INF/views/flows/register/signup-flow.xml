@@ -5,20 +5,29 @@
                           http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
                           
                           
+            <view-state id="activation">
+			    <transition on="activate" to="success"/>
+			    <transition on="cancel" to="failure"/>
+			</view-state>
+			 
+			<view-state id="success" />
+			 
+			<view-state id="failure" />                
                           
                           
-                          
-      <!-- Craeting a single view state just for testing -->
-      <!--  Start stare -->
-      <view-state id="personal" view="flows/register/signup-persoanl"></view-state>
-      
-      <!-- Adding Gloabl Transition -->
-      <global-transitions on="home" to="home">
-      </global-transitions>
+   <!--     <view-state id="personal" view="flows/register/signup-personal"></view-state>
       
       
-      <!-- End State -->
-      <end-state id="home" view="exteralRedirect:contextRelative:/">
+    
+      <end-state id="home" view="externalRedirect:contextRelative:/">
       </end-state>
+      
+      
+     
+            <global-transitions on="home" to="home">
+      </global-transitions>
+       -->
+      
+      
 
 </flow>

@@ -39,11 +39,11 @@
           
           <ul class="nav navbar-nav navbar-right">
           
-          		 <li class="nav-item" id="contact">
+          		 <li class="nav-item" id="regiser">
               		<a class="nav-link" href="${contextRoot}/register">Sign Up</a>
            		 </li>
            		 
-           		 <li class="nav-item" id="contact">
+           		 <li class="nav-item" id="login">
               		<a class="nav-link" href="${contextRoot}/login">Login</a>
            		 </li>
           </ul>
